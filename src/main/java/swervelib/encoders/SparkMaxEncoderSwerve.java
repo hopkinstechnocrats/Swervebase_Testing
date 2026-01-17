@@ -4,7 +4,6 @@ import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.REVLibError;
 import com.revrobotics.spark.SparkAbsoluteEncoder;
 import com.revrobotics.spark.SparkMax;
-import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
@@ -13,34 +12,28 @@ import swervelib.motors.SparkMaxBrushedMotorSwerve;
 import swervelib.motors.SparkMaxSwerve;
 import swervelib.motors.SwerveMotor;
 
-/**
- * SparkMax absolute encoder, attached through the data port.
- */
+
+//SparkMax absolute encoder, attached through the data port.
 public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
 {
 
-  /**
-   * The {@link AbsoluteEncoder} representing the duty cycle encoder attached to the SparkMax.
-   */
+  
+  //The {@link AbsoluteEncoder} representing the duty cycle encoder attached to the SparkMax.
   public  SparkAbsoluteEncoder encoder;
-  /**
-   * An {@link Alert} for if there is a failure configuring the encoder.
-   */
-  private Alert                failureConfiguring;
-  /**
-   * An {@link Alert} for if there is a failure configuring the encoder offset.
-   */
-  private Alert                offsetFailure;
-  /**
-   * {@link SparkMaxBrushedMotorSwerve} or {@link SparkMaxSwerve} instance.
-   */
-  private SwerveMotor          sparkMax;
+  
+  //An {@link Alert} for if there is a failure configuring the encoder.
+  private Alert failureConfiguring;
+  
+  //An {@link Alert} for if there is a failure configuring the encoder offset.
+  private Alert offsetFailure;
+  
+  //{@link SparkMaxBrushedMotorSwerve} or {@link SparkMaxSwerve} instance.
+  private SwerveMotor sparkMax;
 
   /**
    * Create the {@link SparkMaxEncoderSwerve} object as a duty cycle from the {@link com.revrobotics.spark.SparkMax}
    * motor.
-   *
-   * @param motor            Motor to create the encoder from.
+   * @param motor Motor to create the encoder from.
    * @param conversionFactor The conversion factor to set if the output is not from 0 to 360.
    */
   public SparkMaxEncoderSwerve(SwerveMotor motor, int conversionFactor)
@@ -67,15 +60,15 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
   @Override
   public void close()
   {
-    // SPARK MAX encoder gets closed with the motor
-    // I don't think an encoder getting closed should 
-    // close the entire motor so i will keep this empty
-    // sparkFlex.close();
+    /**
+     * SPARK MAX encoder gets closed with the motor
+     * I don't think an encoder getting closed should close the entire motor so i will keep this empty
+     * sparkFlex.close();
+     */
   }
 
   /**
    * Run the configuration until it succeeds or times out.
-   *
    * @param config Lambda supplier returning the error state.
    */
   private void configureSparkMax(Supplier<REVLibError> config)
@@ -90,18 +83,15 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
     failureConfiguring.set(true);
   }
 
-  /**
-   * Reset the encoder to factory defaults.
-   */
+  //Reset the encoder to factory defaults.  
   @Override
   public void factoryDefault()
   {
     // Do nothing
   }
 
-  /**
-   * Clear sticky faults on the encoder.
-   */
+  
+  //Clear sticky faults on the encoder.
   @Override
   public void clearStickyFaults()
   {
@@ -110,7 +100,6 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Configure the absolute encoder to read from [0, 360) per second.
-   *
    * @param inverted Whether the encoder is inverted.
    */
   @Override
@@ -132,7 +121,6 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Set the conversion factor of the {@link SparkMaxEncoderSwerve}.
-   *
    * @param conversionFactor Position conversion factor from ticks to unit.
    */
   public void setConversionFactor(double conversionFactor)
@@ -177,7 +165,6 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the absolute position of the encoder.
-   *
    * @return Absolute position in degrees from [0, 360).
    */
   @Override
@@ -188,7 +175,6 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the instantiated absolute encoder Object.
-   *
    * @return Absolute encoder object.
    */
   @Override
@@ -199,7 +185,6 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Sets the Absolute Encoder Offset inside of the SparkMax's Memory.
-   *
    * @param offset the offset the Absolute Encoder uses as the zero point.
    * @return if setting Absolute Encoder Offset was successful or not.
    */
@@ -211,7 +196,6 @@ public class SparkMaxEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the velocity in degrees/sec.
-   *
    * @return velocity in degrees/sec.
    */
   @Override

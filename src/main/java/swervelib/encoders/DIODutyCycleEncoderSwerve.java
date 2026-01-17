@@ -16,26 +16,21 @@ import edu.wpi.first.wpilibj.Timer;
 public class DIODutyCycleEncoderSwerve extends SwerveAbsoluteEncoder
 {
 
-  /**
-   * Duty Cycle Encoder.
-   */
+  
+  //Duty Cycle Encoder.
   private final DutyCycleEncoder encoder;
-  /**
-   * Inversion state.
-   */
-  private       boolean          isInverted;
-  /**
-   * An {@link Alert}  for if the encoder cannot report accurate velocities.
-   */
-  private       Alert            inaccurateVelocities;
-  /**
-   * The Offset in degrees of the DIO absolute encoder.
-   */
-  private       double           offset;
+  
+  //Inversion state.
+  private boolean isInverted;
+  
+  //An {@link Alert}  for if the encoder cannot report accurate velocities.
+  private Alert inaccurateVelocities;
+  
+  //The Offset in degrees of the DIO absolute encoder.
+  private double offset;
 
   /**
    * Constructor for the DIO duty cycle encoder.
-   *
    * @param pin DIO lane for the encoder.
    */
   public DIODutyCycleEncoderSwerve(int pin)
@@ -57,7 +52,6 @@ public class DIODutyCycleEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Configure the inversion state of the encoder.
-   *
    * @param inverted Whether the encoder is inverted.
    */
   @Override
@@ -68,7 +62,6 @@ public class DIODutyCycleEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the absolute position of the encoder.
-   *
    * @return Absolute position in degrees from [0, 360).
    */
   @Override
@@ -79,7 +72,6 @@ public class DIODutyCycleEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the encoder object.
-   *
    * @return {@link DutyCycleEncoder} from the class.
    */
   @Override
@@ -90,7 +82,6 @@ public class DIODutyCycleEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the velocity in degrees/sec.
-   *
    * @return velocity in degrees/sec.
    */
   @Override
@@ -100,18 +91,16 @@ public class DIODutyCycleEncoderSwerve extends SwerveAbsoluteEncoder
     return encoder.get();
   }
 
-  /**
-   * Reset the encoder to factory defaults.
-   */
+  
+  //Reset the encoder to factory defaults.
   @Override
   public void factoryDefault()
   {
     // Do nothing
   }
 
-  /**
-   * Clear sticky faults on the encoder.
-   */
+  
+  //Clear sticky faults on the encoder.  
   @Override
   public void clearStickyFaults()
   {

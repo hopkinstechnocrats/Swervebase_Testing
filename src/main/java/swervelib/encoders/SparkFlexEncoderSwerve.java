@@ -9,29 +9,25 @@ import edu.wpi.first.wpilibj.Alert.AlertType;
 import swervelib.motors.SparkFlexSwerve;
 import swervelib.motors.SwerveMotor;
 
-/**
- * SparkFlex absolute encoder, attached through the data port.
- */
+
+//SparkFlex absolute encoder, attached through the data port.
 public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
 {
 
-  /**
-   * The {@link AbsoluteEncoder} representing the duty cycle encoder attached to the SparkFlex.
-   */
+  
+  //The {@link AbsoluteEncoder} representing the duty cycle encoder attached to the SparkFlex.
   public  SparkAbsoluteEncoder encoder;
-  /**
-   * An {@link Alert} for if there is a failure configuring the encoder.
-   */
-  private Alert                failureConfiguring;
-  /**
-   * {@link SparkFlexSwerve} instance.
-   */
+  
+  //An {@link Alert} for if there is a failure configuring the encoder.
+  private Alert failureConfiguring;
+  
+  //{@link SparkFlexSwerve} instance.
+  
   private SwerveMotor sparkFlex;
 
   /**
    * Create the {@link SparkFlexEncoderSwerve} object as a duty cycle from the {@link SparkFlex} motor.
-   *
-   * @param motor            Motor to create the encoder from.
+   * @param motor Motor to create the encoder from.
    * @param conversionFactor The conversion factor to set if the output is not from 0 to 360.
    */
   public SparkFlexEncoderSwerve(SwerveMotor motor, int conversionFactor)
@@ -54,24 +50,22 @@ public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
   @Override
   public void close()
   {
-    // SPARK Flex encoder gets closed with the motor
-    // I don't think an encoder getting closed should 
-    // close the entire motor so i will keep this empty
-    // sparkFlex.close();
+    /** SPARK Flex encoder gets closed with the motor
+     * I don't think an encoder getting closed should close the entire motor so i will keep this empty
+     * sparkFlex.close();
+     */
   }
 
-  /**
-   * Reset the encoder to factory defaults.
-   */
+  
+  //Reset the encoder to factory defaults.
   @Override
   public void factoryDefault()
   {
     // Do nothing
   }
 
-  /**
-   * Clear sticky faults on the encoder.
-   */
+  
+  //Clear sticky faults on the encoder.
   @Override
   public void clearStickyFaults()
   {
@@ -80,7 +74,6 @@ public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Configure the absolute encoder to read from [0, 360) per second.
-   *
    * @param inverted Whether the encoder is inverted.
    */
   @Override
@@ -96,7 +89,6 @@ public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Set the conversion factor of the {@link SparkFlexEncoderSwerve}.
-   *
    * @param conversionFactor Position conversion factor from ticks to unit.
    */
   public void setConversionFactor(double conversionFactor)
@@ -113,7 +105,6 @@ public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the absolute position of the encoder.
-   *
    * @return Absolute position in degrees from [0, 360).
    */
   @Override
@@ -124,7 +115,6 @@ public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the instantiated absolute encoder Object.
-   *
    * @return Absolute encoder object.
    */
   @Override
@@ -135,7 +125,6 @@ public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Sets the Absolute Encoder Offset inside of the SparkFlex's Memory.
-   *
    * @param offset the offset the Absolute Encoder uses as the zero point.
    * @return if setting Absolute Encoder Offset was successful or not.
    */
@@ -154,7 +143,6 @@ public class SparkFlexEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the velocity in degrees/sec.
-   *
    * @return velocity in degrees/sec.
    */
   @Override

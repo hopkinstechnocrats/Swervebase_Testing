@@ -17,60 +17,45 @@ import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 
-/**
- * Swerve Absolute Encoder for CTRE CANCoders.
- */
+
+//Swerve Absolute Encoder for CTRE CANCoders.
 public class CANCoderSwerve extends SwerveAbsoluteEncoder
 {
-
-  /**
-   * Wait time for status frames to show up.
-   */
+  //Wait time for status frames to show up.
   public static double STATUS_TIMEOUT_SECONDS = Milliseconds.of(1).in(Seconds);
-  /**
-   * An {@link Alert} for if the CANCoder magnet field is less than ideal.
-   */
-  private final Alert                           magnetFieldLessThanIdeal;
-  /**
-   * An {@link Alert} for if the CANCoder reading is faulty.
-   */
-  private final Alert                           readingFaulty;
-  /**
-   * An {@link Alert} for if the CANCoder reading is faulty and the reading is ignored.
-   */
-  private final Alert                           readingIgnored;
-  /**
-   * An {@link Alert} for if the absolute encoder offset cannot be set.
-   */
-  private final Alert                           cannotSetOffset;
-  /**
-   * Magnet Health status signal for the CANCoder.
-   */
+  
+  //An {@link Alert} for if the CANCoder magnet field is less than ideal.
+  private final Alert magnetFieldLessThanIdeal;
+  
+  //An {@link Alert} for if the CANCoder reading is faulty.
+  private final Alert readingFaulty;
+  
+  //An {@link Alert} for if the CANCoder reading is faulty and the reading is ignored.
+  private final Alert readingIgnored;
+  
+  //An {@link Alert} for if the absolute encoder offset cannot be set.
+  private final Alert cannotSetOffset;
+  
+  //Magnet Health status signal for the CANCoder.
   private final StatusSignal<MagnetHealthValue> magnetHealth;
-  /**
-   * CANCoder reading cache.
-   */
-  private final StatusSignal<Angle>             angle;
-  /**
-   * Angular velocity of the {@link CANcoder}.
-   */
-  private final StatusSignal<AngularVelocity>   velocity;
-  /**
-   * CANCoder with WPILib sendable and support.
-   */
-  public        CANcoder                        encoder;
-  /**
-   * {@link CANcoder} Configurator objet for this class.
-   */
-  private       CANcoderConfigurator            config;
-  /**
-   * {@link CANcoderConfiguration} object for the CANcoder.
-   */
-  private       CANcoderConfiguration           cfg                    = new CANcoderConfiguration();
+  
+  //CANCoder reading cache.
+  private final StatusSignal<Angle> angle;
+  
+  //Angular velocity of the {@link CANcoder}.
+  private final StatusSignal<AngularVelocity> velocity;
+  
+  //CANCoder with WPILib sendable and support.
+  public CANcoder encoder;
+  
+  //{@link CANcoder} Configurator objet for this class.
+  private CANcoderConfigurator config;
+  
+  //{@link CANcoderConfiguration} object for the CANcoder.
+  private CANcoderConfiguration cfg = new CANcoderConfiguration();
 
   /**
    * Initialize the CANCoder on the standard CANBus.
-   *
    * @param id CAN ID.
    */
   public CANCoderSwerve(int id)
@@ -81,7 +66,6 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Initialize the CANCoder on the CANivore.
-   *
    * @param id     CAN ID of the {@link CANcoder}.
    * @param canbus CAN bus to initialize it on. Should be "rio" or "" if the RIO CANbus, else is the CANivore name.
    */
@@ -118,9 +102,8 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
     encoder.close();
   }
 
-  /**
-   * Reset the encoder to factory defaults.
-   */
+  
+  //Reset the encoder to factory defaults.
   @Override
   public void factoryDefault()
   {
@@ -128,9 +111,8 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
     config.apply(cfg);
   }
 
-  /**
-   * Clear sticky faults on the encoder.
-   */
+  
+  //Clear sticky faults on the encoder.
   @Override
   public void clearStickyFaults()
   {
@@ -139,7 +121,6 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Configure the absolute encoder to read from [0, 360) per second.
-   *
    * @param inverted Whether the encoder is inverted.
    */
   @Override
@@ -151,10 +132,8 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
                                                                : SensorDirectionValue.CounterClockwise_Positive));
   }
 
-
   /**
    * Get the absolute position of the encoder. Sets {@link SwerveAbsoluteEncoder#readingError} on erroneous readings.
-   *
    * @return Absolute position in degrees from [0, 360).
    */
   @Override
@@ -199,7 +178,6 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the instantiated absolute encoder Object.
-   *
    * @return Absolute encoder object.
    */
   @Override
@@ -210,7 +188,6 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Sets the Absolute Encoder Offset within the CANcoder's Memory.
-   *
    * @param offset the offset the Absolute Encoder uses as the zero point in degrees.
    * @return if setting Absolute Encoder Offset was successful or not.
    */
@@ -240,7 +217,6 @@ public class CANCoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the velocity in degrees/sec.
-   *
    * @return velocity in degrees/sec.
    */
   @Override

@@ -1,14 +1,6 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
-//TODO: add position between L2 and bottom for elevator
-//TODO: corrections offset for elevator
-//TODO: end effector keep steady whiile driving
-//TODO: add climber
-//TODO: merge in auto branch
-//TODO: use absolute encoder for end effector
-//TODO: make end effector rights deeper
-//TODO: actively NOT updating libraries
 
 package frc.robot;
 
@@ -30,11 +22,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.Constants.elevatorConstants;
-import frc.robot.Constants.endEffectorConstants;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 import swervelib.SwerveInputStream;
@@ -53,9 +42,6 @@ public class RobotContainer
   private final SwerveSubsystem       drivebase  = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(), "swerve"));
 
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
-
-  private Boolean robot_score_left = true;
-
 
   /**
    * Converts driver input into a field-relative ChassisSpeeds that is controlled by angular velocity.
@@ -121,7 +107,6 @@ public class RobotContainer
     configureBindings();
     DriverStation.silenceJoystickConnectionWarning(true);
     NamedCommands.registerCommand("test", Commands.print("I EXIST"));
-    boolean isCompetition = false;
     m_chooser = AutoBuilder.buildAutoChooser();
 
     SmartDashboard.putData("Auto Chooser", m_chooser);
@@ -139,14 +124,7 @@ public class RobotContainer
     Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
     Command driveFieldOrientedDirectAngle_slow      = drivebase.driveFieldOriented(driveDirectAngle_slow);
     Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
-    Command driveFieldOrientedAnglularVelocity_slow = drivebase.driveFieldOriented(driveAngularVelocity_slow);
-    Command driveRobotOrientedAngularVelocity  = drivebase.driveFieldOriented(driveRobotOriented);
-    Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
-        driveDirectAngle);
     Command driveFieldOrientedDirectAngleKeyboard      = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
-    Command driveFieldOrientedAnglularVelocityKeyboard = drivebase.driveFieldOriented(driveAngularVelocityKeyboard);
-    Command driveSetpointGenKeyboard = drivebase.driveWithSetpointGeneratorFieldRelative(
-        driveDirectAngleKeyboard);
 
     if (RobotBase.isSimulation())
     {

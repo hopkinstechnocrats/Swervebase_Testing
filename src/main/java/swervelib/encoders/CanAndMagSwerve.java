@@ -3,24 +3,20 @@ package swervelib.encoders;
 import com.reduxrobotics.sensors.canandmag.Canandmag;
 import com.reduxrobotics.sensors.canandmag.CanandmagSettings;
 
-/**
- * HELIUM {@link Canandmag} from ReduxRobotics absolute encoder, attached through the CAN bus.
- */
+
+//HELIUM {@link Canandmag} from ReduxRobotics absolute encoder, attached through the CAN bus.
 public class CanAndMagSwerve extends SwerveAbsoluteEncoder
 {
 
-  /**
-   * The {@link Canandmag} representing the CANandMag on the CAN bus.
-   */
+  
+  //The {@link Canandmag} representing the CANandMag on the CAN bus.
   public Canandmag encoder;
-  /**
-   * The {@link Canandmag} settings object to use.
-   */
+  
+  //The {@link Canandmag} settings object to use.
   public CanandmagSettings settings;
 
   /**
    * Create the {@link Canandmag}
-   *
    * @param canid The CAN ID whenever the CANandMag is operating on the CANBus.
    */
   public CanAndMagSwerve(int canid)
@@ -46,9 +42,8 @@ public class CanAndMagSwerve extends SwerveAbsoluteEncoder
     encoder.resetFactoryDefaults(false);
   }
 
-  /**
-   * Clear sticky faults on the encoder.
-   */
+  
+  //Clear sticky faults on the encoder.
   @Override
   public void clearStickyFaults()
   {
@@ -57,7 +52,6 @@ public class CanAndMagSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Configure the CANandMag to read from [0, 360) per second.
-   *
    * @param inverted Whether the encoder is inverted.
    */
   @Override
@@ -69,7 +63,6 @@ public class CanAndMagSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the absolute position of the encoder.
-   *
    * @return Absolute position in degrees from [0, 360).
    */
   @Override
@@ -80,7 +73,6 @@ public class CanAndMagSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the instantiated absolute encoder Object.
-   *
    * @return Absolute encoder object.
    */
   @Override
@@ -91,7 +83,6 @@ public class CanAndMagSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Cannot set the offset of the CANandMag.
-   *
    * @param offset the offset the Absolute Encoder uses as the zero point.
    * @return true if setting the zero point succeeded, false otherwise
    */
@@ -104,7 +95,6 @@ public class CanAndMagSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the velocity in degrees/sec.
-   *
    * @return velocity in degrees/sec.
    */
   @Override

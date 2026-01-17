@@ -5,9 +5,6 @@
 
 package frc.robot;
 
-
-import java.util.concurrent.ConcurrentHashMap.KeySetView;
-
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
 import swervelib.math.Matter;
@@ -28,7 +25,6 @@ public final class Constants
   public static final double LOOP_TIME  = 0.13; //s, 20ms + 110ms sprk max velocity lag
   public static final double MAX_SPEED  = Units.feetToMeters(8);
 
-  //TODO: put actual servo id here
   public static final int servoID = 2;
   // Maximum speed of the robot in meters per second, used to limit acceleration.
 

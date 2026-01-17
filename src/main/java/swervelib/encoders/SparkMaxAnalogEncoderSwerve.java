@@ -12,33 +12,27 @@ import swervelib.motors.SparkMaxBrushedMotorSwerve;
 import swervelib.motors.SparkMaxSwerve;
 import swervelib.motors.SwerveMotor;
 
-/**
- * SparkMax absolute encoder, attached through the data port analog pin.
- */
+
+//SparkMax absolute encoder, attached through the data port analog pin.
 public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
 {
 
-  /**
-   * {@link swervelib.motors.SparkMaxSwerve} or {@link swervelib.motors.SparkMaxBrushedMotorSwerve} object.
-   */
-  private final SwerveMotor       sparkMax;
-  /**
-   * The {@link SparkAnalogSensor} representing the duty cycle encoder attached to the SparkMax analog port.
-   */
-  public        SparkAnalogSensor encoder;
-  /**
-   * An {@link Alert} for if there is a failure configuring the encoder.
-   */
-  private       Alert             failureConfiguring;
-  /**
-   * An {@link Alert} for if the absolute encoder does not support integrated offsets.
-   */
-  private       Alert             doesNotSupportIntegratedOffsets;
+  
+  //{@link swervelib.motors.SparkMaxSwerve} or {@link swervelib.motors.SparkMaxBrushedMotorSwerve} object.
+  private final SwerveMotor sparkMax;
+  
+  //The {@link SparkAnalogSensor} representing the duty cycle encoder attached to the SparkMax analog port.
+  public SparkAnalogSensor encoder;
+  
+  //An {@link Alert} for if there is a failure configuring the encoder.
+  private Alert failureConfiguring;
+  
+  //An {@link Alert} for if the absolute encoder does not support integrated offsets.
+  private Alert doesNotSupportIntegratedOffsets;
 
   /**
    * Create the {@link SparkMaxAnalogEncoderSwerve} object as a analog sensor from the {@link SparkMax} motor data port
    * analog pin.
-   *
    * @param motor      Motor to create the encoder from.
    * @param maxVoltage Maximum voltage for analog input reading.
    */
@@ -67,15 +61,15 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
   @Override
   public void close()
   {
-    // SPARK MAX Analog encoder gets closed with the motor
-    // I don't think an encoder getting closed should 
-    // close the entire motor so i will keep this empty
-    // sparkMax.close();
+    /**
+     * SPARK MAX Analog encoder gets closed with the motor
+     * I don't think an encoder getting closed should close the entire motor so i will keep this empty
+     * sparkMax.close();
+     */
   }
 
   /**
    * Run the configuration until it succeeds or times out.
-   *
    * @param config Lambda supplier returning the error state.
    */
   private void configureSparkMax(Supplier<REVLibError> config)
@@ -92,7 +86,6 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Set the conversion factor of the {@link SparkMaxAnalogEncoderSwerve}.
-   *
    * @param conversionFactor Position conversion factor from ticks to unit.
    */
   public void setConversionFactor(double conversionFactor)
@@ -133,18 +126,17 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
   }
 
 
-  /**
-   * Reset the encoder to factory defaults.
-   */
+  
+  //Reset the encoder to factory defaults.
   @Override
   public void factoryDefault()
   {
     // Do nothing
   }
 
-  /**
-   * Clear sticky faults on the encoder.
-   */
+  
+  //Clear sticky faults on the encoder.
+  
   @Override
   public void clearStickyFaults()
   {
@@ -153,7 +145,6 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Configure the absolute encoder to read from [0, 360) per second.
-   *
    * @param inverted Whether the encoder is inverted.
    */
   @Override
@@ -174,7 +165,6 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the absolute position of the encoder.
-   *
    * @return Absolute position in degrees from [0, 360).
    */
   @Override
@@ -185,7 +175,6 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the instantiated absolute encoder Object.
-   *
    * @return Absolute encoder object.
    */
   @Override
@@ -196,7 +185,6 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Sets the Absolute Encoder offset at the Encoder Level.
-   *
    * @param offset the offset the Absolute Encoder uses as the zero point.
    * @return if setting Absolute Encoder Offset was successful or not.
    */
@@ -209,7 +197,6 @@ public class SparkMaxAnalogEncoderSwerve extends SwerveAbsoluteEncoder
 
   /**
    * Get the velocity in degrees/sec.
-   *
    * @return velocity in degrees/sec.
    */
   @Override
