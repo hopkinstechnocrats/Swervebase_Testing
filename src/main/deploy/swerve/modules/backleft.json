@@ -14,14 +14,14 @@
     "id": 10,
     "canbus": "GertrudeGreyser"
   },
+  "inverted": {
+    "angle": true,
+    "drive": false
+  },
   "encoder": {
     "type": "thrifty",
     "id": 3,
     "canbus": null
-  },
-  "inverted": {
-    "drive": false,
-    "angle": true
   },
   "absoluteEncoderInverted": false
 }
