@@ -1,0 +1,27 @@
+{
+  "location": {
+    "front": -10.5,
+    "left": -10.5
+  },
+  "absoluteEncoderOffset": 341.2,
+  "drive": {
+    "type": "falcon",
+    "id": 7,
+    "canbus": "GertrudeGreyser"
+  },
+  "angle": {
+    "type": "falcon",
+    "id": 8,
+    "canbus": "GertrudeGreyser"
+  },
+  "encoder": {
+    "type": "thrifty",
+    "id": 0,
+    "canbus": null
+  },
+  "inverted": {
+    "drive": false,
+    "angle": true
+  },
+  "absoluteEncoderInverted": false
+}
