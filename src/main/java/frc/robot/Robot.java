@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot
 {
 
-  private static Robot instance;
-  private Command m_autonomousCommand;
+  private static Robot   instance;
+  private        Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
 
@@ -103,7 +103,10 @@ public class Robot extends TimedRobot
     m_robotContainer.setMotorBrake(true);
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
-    // schedule the autonomous command (example)
+    //Print the selected autonomous command upon autonomous init
+    System.out.println("Auto selected: " + m_autonomousCommand);
+
+    // schedule the autonomous command selected in the autoChooser
     if (m_autonomousCommand != null)
     {
       m_autonomousCommand.schedule();
